@@ -1,3 +1,4 @@
+import com.oracle.jrockit.jfr.InvalidValueException;
 import junitparams.JUnitParamsRunner;
 import org.junit.Assert;
 import org.junit.Before;
@@ -12,6 +13,7 @@ import org.junit.runner.RunWith;
 public class GameOfLifeTest {
     GameOfLife SUT;
     int[][] startingGrid;
+    int[][] wrongStartingGrid;
 
     @Before
     public void setUp() {
@@ -19,6 +21,13 @@ public class GameOfLifeTest {
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 1, 0, 0, 0},
+                {0, 0, 0, 0, 0, 1, 1, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+        };
+        wrongStartingGrid = new int[][]{
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 2, 0, 0, 0},
                 {0, 0, 0, 0, 0, 1, 1, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
         };
@@ -40,5 +49,13 @@ public class GameOfLifeTest {
 
         //Assert
         Assert.assertEquals("The world needs to be rendered properly.", expected, actual);
+    }
+
+    @Test(expected=NumberFormatException.class)
+    public void renderWorldCatchExceptionsForInputOtherThanZerosAndOnes() {
+        //Arrange
+
+        //Act
+        String actual = SUT.renderGrid(wrongStartingGrid);
     }
 }
