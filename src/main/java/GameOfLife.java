@@ -20,8 +20,10 @@ public class GameOfLife {
             for (int y = 0; y < grid[0].length; y++) {
                 if (grid[x][y] == DEAD)
                     gridString += DEAD_STRING;
-                else
+                else if (grid[x][y] == ALIVE)
                     gridString += ALIVE_STRING;
+                else
+                    throw new NumberFormatException("Input should only be 0s and 1s");
             }
             gridString += "\n";
         }
