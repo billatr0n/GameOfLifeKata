@@ -12,24 +12,21 @@ import org.junit.runner.RunWith;
 @RunWith(JUnitParamsRunner.class)
 public class GameOfLifeTest {
     GameOfLife SUT;
-    int[][] startingGrid;
-    int[][] wrongStartingGrid;
+    FormOfLife[][] startingGrid;
+    FormOfLife[][] wrongStartingGrid;
+
 
     @Before
     public void setUp() {
-        startingGrid = new int[][]{
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 1, 0, 0, 0},
-                {0, 0, 0, 0, 0, 1, 1, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+        startingGrid = new FormOfLife[][]{
+                {new FormOfLife(false, "*", "-"), new FormOfLife(false, "*", "-"), new FormOfLife(true, "*", "_"), new FormOfLife(false, "*", "-")},
+                {new FormOfLife(false, "*", "-"), new FormOfLife(true, "*", "_"), new FormOfLife(true, "*", "_"), new FormOfLife(false, "*", "-")},
+                {new FormOfLife(false, "*", "-"), new FormOfLife(false, "*", "-"), new FormOfLife(false, "*", "-"), new FormOfLife(false, "*", "-")}
         };
-        wrongStartingGrid = new int[][]{
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 2, 0, 0, 0},
-                {0, 0, 0, 0, 0, 1, 1, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+        wrongStartingGrid = new FormOfLife[][]{
+                {new FormOfLife(false, "-", "8"), new FormOfLife(false, "*", "-"), new FormOfLife(false, "*", "-"), new FormOfLife(false, "*", "-")},
+                {new FormOfLife(false, "*", "-"), new FormOfLife(false, "*", "-"), new FormOfLife(false, "*", "-"), new FormOfLife(false, "*", "-")},
+                {new FormOfLife(false, "*", "-"), new FormOfLife(false, "*", "-"), new FormOfLife(false, "*", "-"), new FormOfLife(false, "*", "-")}
         };
 
         SUT = new GameOfLife(startingGrid);
@@ -39,23 +36,13 @@ public class GameOfLifeTest {
     @Test
     public void renderWorld() {
         //Arrange
-        String expected = "----------\n" +
-                          "----------\n" +
-                          "------*---\n" +
-                          "-----**---\n" +
-                          "----------\n";
+        String expected = "--*-\n" +
+                "-**-\n" +
+                "----\n";
         //Act
         String actual = SUT.renderGrid(startingGrid);
 
         //Assert
         Assert.assertEquals("The world needs to be rendered properly.", expected, actual);
-    }
-
-    @Test(expected=NumberFormatException.class)
-    public void renderWorldCatchExceptionsForInputOtherThanZerosAndOnes() {
-        //Arrange
-
-        //Act
-        String actual = SUT.renderGrid(wrongStartingGrid);
     }
 }
