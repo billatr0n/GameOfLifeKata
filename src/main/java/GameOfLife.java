@@ -7,23 +7,18 @@ public class GameOfLife {
     public static final String ALIVE_STRING = "*";
     public static final String DEAD_STRING = "-";
 
-    private int[][] grid;
+    private FormOfLife[][] grid;
 
-    public GameOfLife(int[][] grid) {
+    public GameOfLife(FormOfLife[][] grid) {
 
        setGrid(grid);
     }
 
-    public String renderGrid(int[][] grid) {
+    public String renderGrid(FormOfLife[][] grid) {
         String gridString = "";
         for (int x = 0; x < grid.length; x++) {
             for (int y = 0; y < grid[0].length; y++) {
-                if (grid[x][y] == DEAD)
-                    gridString += DEAD_STRING;
-                else if (grid[x][y] == ALIVE)
-                    gridString += ALIVE_STRING;
-                else
-                    throw new NumberFormatException("Input should only be 0s and 1s");
+               gridString += grid[x][y].printExistence();
             }
             gridString += "\n";
         }
@@ -32,11 +27,11 @@ public class GameOfLife {
 
     }
 
-    public int[][] getGrid() {
+    public FormOfLife[][] getGrid() {
         return grid;
     }
 
-    public void setGrid(int[][] grid) {
+    public void setGrid(FormOfLife[][] grid) {
         this.grid = grid;
     }
 
