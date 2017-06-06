@@ -1,3 +1,5 @@
+package com;
+
 /**
  * Created by vasilis on 30-5-17.
  */
@@ -7,14 +9,14 @@ public class GameOfLife {
     public static final String ALIVE_STRING = "*";
     public static final String DEAD_STRING = "-";
 
-    private FormOfLife[][] grid;
+    private LifeForm[][] grid;
 
-    public GameOfLife(FormOfLife[][] grid) {
+    public GameOfLife(LifeForm[][] grid) {
 
        setGrid(grid);
     }
 
-    public String renderGrid(FormOfLife[][] grid) {
+    public String renderGrid(LifeForm[][] grid) {
         String gridString = "";
         for (int x = 0; x < grid.length; x++) {
             for (int y = 0; y < grid[0].length; y++) {
@@ -27,11 +29,11 @@ public class GameOfLife {
 
     }
 
-    public FormOfLife[][] getGrid() {
+    public LifeForm[][] getGrid() {
         return grid;
     }
 
-    public void setGrid(FormOfLife[][] grid) {
+    public void setGrid(LifeForm[][] grid) {
         this.grid = grid;
     }
 

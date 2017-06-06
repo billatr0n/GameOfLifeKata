@@ -1,12 +1,14 @@
+package com;
+
 /**
  * Created by vasilis on 2-6-17.
  */
-public class FormOfLife {
+public class LifeForm {
     private boolean alive;
     private String aliveRepresentation;
     private String deadRepresentation;
 
-    public FormOfLife(boolean alive, String aliveRepresentation, String deadRepresentation) {
+    public LifeForm(boolean alive, String aliveRepresentation, String deadRepresentation) {
         setAlive(alive);
         setAliveRepresentation(aliveRepresentation);
         setDeadRepresentation(deadRepresentation);

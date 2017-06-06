@@ -1,4 +1,5 @@
-import com.oracle.jrockit.jfr.InvalidValueException;
+import com.GameOfLife;
+import com.LifeForm;
 import junitparams.JUnitParamsRunner;
 import org.junit.Assert;
 import org.junit.Before;
@@ -12,27 +13,26 @@ import org.junit.runner.RunWith;
 @RunWith(JUnitParamsRunner.class)
 public class GameOfLifeTest {
     GameOfLife SUT;
-    FormOfLife[][] startingGrid;
-    FormOfLife[][] wrongStartingGrid;
+    LifeForm[][] startingGrid;
+    LifeForm[][] wrongStartingGrid;
 
 
     @Before
     public void setUp() {
-        startingGrid = new FormOfLife[][]{
-                {new FormOfLife(false, "*", "-"), new FormOfLife(false, "*", "-"), new FormOfLife(true, "*", "_"), new FormOfLife(false, "*", "-")},
-                {new FormOfLife(false, "*", "-"), new FormOfLife(true, "*", "_"), new FormOfLife(true, "*", "_"), new FormOfLife(false, "*", "-")},
-                {new FormOfLife(false, "*", "-"), new FormOfLife(false, "*", "-"), new FormOfLife(false, "*", "-"), new FormOfLife(false, "*", "-")}
+        startingGrid = new LifeForm[][]{
+                {new LifeForm(false, "*", "-"), new LifeForm(false, "*", "-"), new LifeForm(true, "*", "_"), new LifeForm(false, "*", "-")},
+                {new LifeForm(false, "*", "-"), new LifeForm(true, "*", "_"), new LifeForm(true, "*", "_"), new LifeForm(false, "*", "-")},
+                {new LifeForm(false, "*", "-"), new LifeForm(false, "*", "-"), new LifeForm(false, "*", "-"), new LifeForm(false, "*", "-")}
         };
-        wrongStartingGrid = new FormOfLife[][]{
-                {new FormOfLife(false, "-", "8"), new FormOfLife(false, "*", "-"), new FormOfLife(false, "*", "-"), new FormOfLife(false, "*", "-")},
-                {new FormOfLife(false, "*", "-"), new FormOfLife(false, "*", "-"), new FormOfLife(false, "*", "-"), new FormOfLife(false, "*", "-")},
-                {new FormOfLife(false, "*", "-"), new FormOfLife(false, "*", "-"), new FormOfLife(false, "*", "-"), new FormOfLife(false, "*", "-")}
+        wrongStartingGrid = new LifeForm[][]{
+                {new LifeForm(false, "-", "8"), new LifeForm(false, "*", "-"), new LifeForm(false, "*", "-"), new LifeForm(false, "*", "-")},
+                {new LifeForm(false, "*", "-"), new LifeForm(false, "*", "-"), new LifeForm(false, "*", "-"), new LifeForm(false, "*", "-")},
+                {new LifeForm(false, "*", "-"), new LifeForm(false, "*", "-"), new LifeForm(false, "*", "-"), new LifeForm(false, "*", "-")}
         };
 
         SUT = new GameOfLife(startingGrid);
         //Provide the two-dimensional world;
     }
-
     @Test
     public void renderWorld() {
         //Arrange
