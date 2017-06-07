@@ -4,10 +4,6 @@ package com;
  * Created by vasilis on 30-5-17.
  */
 public class GameOfLife {
-    public static final int ALIVE = 1;
-    public static final int DEAD = 0;
-    public static final String ALIVE_STRING = "*";
-    public static final String DEAD_STRING = "-";
 
     private LifeForm[][] grid;
 
