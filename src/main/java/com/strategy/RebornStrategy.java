@@ -1,7 +1,9 @@
 package com.strategy;
 
 import com.LifeForm;
+import com.utils.NeighbourHelper;
 
+import java.awt.*;
 import java.util.List;
 
 /**
@@ -9,12 +11,20 @@ import java.util.List;
  */
 public class RebornStrategy implements NextGenStrategy {
     public boolean strategyApplies(LifeForm[][] grid, int posX, int posY) {
-        //TODO implementation
-        return false;
-    }
+        boolean result = false;
+        Point myLifeFormLocation = new Point(posX, posY);
+        if (!grid[myLifeFormLocation.x][myLifeFormLocation.y].isAlive()) {
+            List<LifeForm> neighbours = NeighbourHelper.identifyNeighbours(grid, myLifeFormLocation);
+            int amountOfAliveNeighbours = 0;
+            for (LifeForm lifeForm : neighbours) {
+                if (lifeForm.isAlive())
+                    amountOfAliveNeighbours++;
+            }
+            if (amountOfAliveNeighbours == 3) {
+                result = true;
+            }
 
-    public List<LifeForm> identifyNeighbours(LifeForm[][] grid) {
-        //TODO implementation
-        return null;
+        }
+        return result;
     }
 }
