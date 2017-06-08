@@ -1,7 +1,9 @@
 package com.strategy;
 
 import com.LifeForm;
+import com.utils.NeighbourHelper;
 
+import java.awt.*;
 import java.util.List;
 
 /**
@@ -11,12 +13,19 @@ public class UnderpopulationStrategy implements NextGenStrategy {
 
     public boolean strategyApplies(LifeForm[][] grid, int posX, int posY) {
         boolean result = false;
-        //TODO implementation
-        return result;
-    }
+        Point myLifeFormLocation = new Point(posX, posY);
+        if (grid[myLifeFormLocation.x][myLifeFormLocation.y].isAlive()) {
+            List<LifeForm> neighbours = NeighbourHelper.identifyNeighbours(grid, myLifeFormLocation);
+            int amountOfAliveNeighbours = 0;
+            for (LifeForm lifeForm : neighbours) {
+                if (lifeForm.isAlive())
+                    amountOfAliveNeighbours++;
+            }
+            if (amountOfAliveNeighbours < 2) {
+                result = true;
+            }
 
-    public List<LifeForm> identifyNeighbours(LifeForm[][] grid) {
-        //TODO implementation
-        return null;
+        }
+        return result;
     }
 }
