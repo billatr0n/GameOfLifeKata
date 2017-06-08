@@ -31,7 +31,7 @@ public class RebornStrategyTest {
         };
 
         return new Object[]{
-                new Object[]{initialWorld, 1,1},
+                new Object[]{initialWorld, 0,0},
         };
     }
 
@@ -44,7 +44,7 @@ public class RebornStrategyTest {
 
         return new Object[]{
 
-                new Object[]{initialWorld, 0,0},
+                new Object[]{initialWorld, 1,0},
                 new Object[]{initialWorld, 0,1},
                 new Object[]{initialWorld, 2,0},
                 new Object[]{initialWorld, 2,2},
