@@ -13,13 +13,14 @@ public class GameOfLife {
     }
 
     public String renderGrid(LifeForm[][] grid) {
-        String gridString = "";
+        StringBuffer buffer = new StringBuffer();
         for (int x = 0; x < grid.length; x++) {
             for (int y = 0; y < grid[0].length; y++) {
-               gridString += grid[x][y].printExistence();
+                buffer.append(grid[x][y].printExistence());
             }
-            gridString += "\n";
+            buffer.append("\n");
         }
+        String gridString = buffer.toString();
         System.out.println(gridString);
         return gridString;
 
