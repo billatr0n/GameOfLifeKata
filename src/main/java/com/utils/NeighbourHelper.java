@@ -10,27 +10,42 @@ import java.util.List;
 /**
  * Created by vasilis on 7-6-17.
  */
-public class NeighbourHelper {
-    public static List<LifeForm> identifyNeighbours(LifeForm[][] grid, Point myLocation) {
-        if (grid == null) return Collections.emptyList();
-        List<LifeForm> neighbours = new ArrayList<LifeForm>();
+public final class NeighbourHelper {
+    private NeighbourHelper() {
 
-        if (myLocation.x - 1 >= 0 && myLocation.y - 1 >= 0)
-            neighbours.add(grid[myLocation.x - 1][myLocation.y - 1]);
-        if (myLocation.x - 1 >= 0)
+    }
+
+    public static List<LifeForm> identifyNeighbours(LifeForm[][] grid, Point myLocation) {
+        if (grid == null) {
+            return Collections.emptyList();
+        }
+        List<LifeForm> neighbours = new ArrayList<LifeForm>();
+        //Need to somehow reduce cyclomatic complexity
+        if (myLocation.x - 1 >= 0) {
             neighbours.add(grid[myLocation.x - 1][myLocation.y]);
-        if (myLocation.x - 1 >= 0 && myLocation.y + 1 < grid[myLocation.x].length)
-            neighbours.add(grid[myLocation.x - 1][myLocation.y + 1]);
-        if (myLocation.y - 1 >= 0)
+            if (myLocation.y - 1 >= 0) {
+                neighbours.add(grid[myLocation.x - 1][myLocation.y - 1]);
+            }
+            if (myLocation.y + 1 < grid[myLocation.x].length) {
+                neighbours.add(grid[myLocation.x - 1][myLocation.y + 1]);
+            }
+        }
+        if (myLocation.y - 1 >= 0) {
             neighbours.add(grid[myLocation.x][myLocation.y - 1]);
-        if (myLocation.y + 1 < grid[myLocation.x].length)
+        }
+        if (myLocation.y + 1 < grid[myLocation.x].length) {
             neighbours.add(grid[myLocation.x][myLocation.y + 1]);
-        if (myLocation.x + 1 < grid.length && myLocation.y - 1 >= 0)
-            neighbours.add(grid[myLocation.x + 1][myLocation.y - 1]);
-        if (myLocation.x + 1 < grid.length)
+        }
+
+        if (myLocation.x + 1 < grid.length) {
             neighbours.add(grid[myLocation.x + 1][myLocation.y]);
-        if (myLocation.x + 1 < grid.length && myLocation.y + 1 < grid[myLocation.x].length)
-            neighbours.add(grid[myLocation.x + 1][myLocation.y + 1]);
+            if (myLocation.y - 1 >= 0) {
+                neighbours.add(grid[myLocation.x + 1][myLocation.y - 1]);
+            }
+            if (myLocation.y + 1 < grid[myLocation.x].length) {
+                neighbours.add(grid[myLocation.x + 1][myLocation.y + 1]);
+            }
+        }
         return neighbours;
     }
 }

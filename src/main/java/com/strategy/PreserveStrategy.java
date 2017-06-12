@@ -11,6 +11,9 @@ import java.util.List;
  */
 public class PreserveStrategy implements NextGenStrategy {
 
+    public static final boolean NEXT_GEN_ALIVE = true;
+    public static final String  DEATH_REASON= "Survival";
+
     public boolean strategyApplies(LifeForm[][] grid, int posX, int posY) {
         boolean result = false;
         Point myLifeFormLocation = new Point(posX, posY);
@@ -28,4 +31,12 @@ public class PreserveStrategy implements NextGenStrategy {
         }
         return result;
     }
+    public boolean getNextGen() {
+        return NEXT_GEN_ALIVE;
+    }
+
+    public String getReason() {
+        return DEATH_REASON;
+    }
+
 }

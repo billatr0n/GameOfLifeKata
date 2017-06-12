@@ -8,4 +8,6 @@ import com.LifeForm;
  */
 public interface NextGenStrategy {
      boolean strategyApplies(LifeForm[][] grid,int posX, int posY);
+     boolean getNextGen();
+     String getReason();
 }
