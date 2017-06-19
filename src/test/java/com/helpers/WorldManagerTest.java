@@ -1,3 +1,5 @@
+package com.helpers;
+
 import com.GameOfLife;
 import com.LifeForm;
 import com.helpers.WorldManager;
@@ -16,7 +18,7 @@ import java.util.List;
  */
 
 @RunWith(JUnitParamsRunner.class)
-public class GameOfLifeTest {
+public class WorldManagerTest {
     WorldManager SUT;
     LifeForm[][] startingGrid;
     LifeForm[][] wrongStartingGrid;
