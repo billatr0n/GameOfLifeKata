@@ -12,17 +12,18 @@ import java.util.List;
 public class UnderpopulationStrategy implements NextGenStrategy {
 
     public static final boolean NEXT_GEN_ALIVE = false;
-    public static final String  DEATH_REASON= "Overcrowding";
+    public static final String DEATH_REASON = "Overcrowding";
 
-    public boolean strategyApplies(LifeForm[][] grid, int posX, int posY) {
+    public final boolean strategyApplies(LifeForm[][] grid, int posX, int posY) {
         boolean result = false;
         Point myLifeFormLocation = new Point(posX, posY);
         if (grid[myLifeFormLocation.x][myLifeFormLocation.y].isAlive()) {
             List<LifeForm> neighbours = NeighbourHelper.identifyNeighbours(grid, myLifeFormLocation);
             int amountOfAliveNeighbours = 0;
             for (LifeForm lifeForm : neighbours) {
-                if (lifeForm.isAlive())
+                if (lifeForm.isAlive()) {
                     amountOfAliveNeighbours++;
+                }
             }
             if (amountOfAliveNeighbours < 2) {
                 result = true;
@@ -31,11 +32,12 @@ public class UnderpopulationStrategy implements NextGenStrategy {
         }
         return result;
     }
-    public boolean getNextGen() {
+
+    public final boolean getNextGen() {
         return NEXT_GEN_ALIVE;
     }
 
-    public String getReason() {
+    public final String getReason() {
         return DEATH_REASON;
     }
 

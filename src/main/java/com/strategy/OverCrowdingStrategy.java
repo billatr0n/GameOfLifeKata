@@ -11,7 +11,8 @@ import java.util.List;
  */
 public class OverCrowdingStrategy implements NextGenStrategy {
     public static final boolean NEXT_GEN_ALIVE = false;
-    public static final String  DEATH_REASON= "Overcrowding";
+    public static final String DEATH_REASON = "Overcrowding";
+
     public boolean strategyApplies(LifeForm[][] grid, int posX, int posY) {
         boolean result = false;
         Point myLifeFormLocation = new Point(posX, posY);
@@ -19,8 +20,9 @@ public class OverCrowdingStrategy implements NextGenStrategy {
             List<LifeForm> neighbours = NeighbourHelper.identifyNeighbours(grid, myLifeFormLocation);
             int amountOfAliveNeighbours = 0;
             for (LifeForm lifeForm : neighbours) {
-                if (lifeForm.isAlive())
+                if (lifeForm.isAlive()) {
                     amountOfAliveNeighbours++;
+                }
             }
             if (amountOfAliveNeighbours > 3) {
                 result = true;
