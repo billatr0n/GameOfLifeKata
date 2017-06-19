@@ -7,58 +7,24 @@ import java.awt.*;
  */
 public class LifeForm {
     private boolean alive;
-    private String aliveRepresentation;
-    private String deadRepresentation;
     private Point location;
 
     public LifeForm() {
     }
 
-    public LifeForm(boolean alive, String aliveRepresentation, String deadRepresentation) {
-        setAlive(alive);
-        setAliveRepresentation(aliveRepresentation);
-        setDeadRepresentation(deadRepresentation);
-        setLocation(location);
-    }
-
-    public boolean isAlive() {
-        return alive;
-    }
-
-    public Point getLocation() {
-        return location;
-    }
-
-    public void setLocation(Point location) {
-        this.location = location;
-    }
-
-    public void setAlive(boolean alive) {
+    public LifeForm(boolean alive) {
         this.alive = alive;
     }
 
-    public String getAliveRepresentation() {
-        return aliveRepresentation;
+    public final boolean isAlive() {
+        return alive;
     }
 
-    private void setAliveRepresentation(String aliveRepresentation) {
-        this.aliveRepresentation = aliveRepresentation;
+    public final Point getLocation() {
+        return location;
     }
 
-    public String getDeadRepresentation() {
-        return deadRepresentation;
-    }
-
-    private void setDeadRepresentation(String deadRepresentation) {
-        this.deadRepresentation = deadRepresentation;
-    }
-
-    public String printExistence() {
-        String print;
-        if (isAlive())
-            print = getAliveRepresentation();
-        else
-            print = getDeadRepresentation();
-        return print;
+    public final void setLocation(Point location) {
+        this.location = location;
     }
 }
