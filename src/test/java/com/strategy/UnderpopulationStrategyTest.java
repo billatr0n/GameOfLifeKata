@@ -25,9 +25,9 @@ public class UnderpopulationStrategyTest {
     }
     private static Object[] strategySuccessfulLocations() {
         LifeForm[][] initialWorld = new LifeForm[][]{
-                {new LifeForm(false, "*", "-"), new LifeForm(false, "*", "_"), new LifeForm(false, "*", "-")},
-                {new LifeForm(true, "*", "_"), new LifeForm(false, "*", "_"), new LifeForm(false, "*", "-")},
-                {new LifeForm(true, "*", "-"), new LifeForm(false, "*", "-"), new LifeForm(false, "*", "-")}
+                {new LifeForm(false), new LifeForm(false), new LifeForm(false)},
+                {new LifeForm(true), new LifeForm(false), new LifeForm(false)},
+                {new LifeForm(true), new LifeForm(false), new LifeForm(false)}
         };
 
         return new Object[]{
@@ -37,9 +37,9 @@ public class UnderpopulationStrategyTest {
 
     private static Object[] nonStrategySuccessfulLocations() {
         LifeForm[][] initialWorld = new LifeForm[][]{
-                {new LifeForm(false, "*", "-"), new LifeForm(true, "*", "_"), new LifeForm(false, "*", "-")},
-                {new LifeForm(true, "*", "_"), new LifeForm(true, "*", "_"), new LifeForm(false, "*", "-")},
-                {new LifeForm(true, "*", "-"), new LifeForm(true, "*", "-"), new LifeForm(false, "*", "-")}
+                {new LifeForm(false), new LifeForm(true), new LifeForm(false)},
+                {new LifeForm(true), new LifeForm(true), new LifeForm(false)},
+                {new LifeForm(true), new LifeForm(true), new LifeForm(false)}
         };
 
         return new Object[]{
